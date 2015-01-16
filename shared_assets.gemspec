@@ -13,7 +13,17 @@ Gem::Specification.new do |spec|
   spec.homepage      = ""
   spec.license       = "MIT"
 
-  spec.files = Dir["{lib,vendor}/**/*"] #+ ["MIT-LICENSE", "README.md"]  
+  # spec.files: The files included in the gem. This clever use of git ls-files
+  # ensures that any files tracked in the git repo will be included.
+  spec.files = `git ls-files -z`.split("\x0") 
+  # spec.test_files: Files that are used for testing the gem. This line
+  # supports TestUnit, MiniTest, RSpec, and Cucumber
+  spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  # spec.executables: Where any executable files included with the gem live.
+  # These go in bin by convention.
+  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  # spec.require_paths: Directories within the gem that need to be loaded in order
+  # to load the gem.
   spec.require_paths = ["lib"]
 
   spec.add_dependency "railties", "~> 4.0"  

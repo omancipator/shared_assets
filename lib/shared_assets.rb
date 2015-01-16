@@ -2,5 +2,6 @@ require "shared_assets/version"
 
 module SharedAssets
   class Engine < ::Rails::Engine
-    end
+  	 #paths["app/javascripts"] = "app/javascripts"
+  end
 end
