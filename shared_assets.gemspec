@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   # spec.executables: Where any executable files included with the gem live.
   # These go in bin by convention.
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   # spec.require_paths: Directories within the gem that need to be loaded in order
   # to load the gem.
   spec.require_paths = ["lib"]
